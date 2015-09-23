@@ -1,4 +1,4 @@
-### Step 1
+### Step 1 - Start
 
 1. Install ionic `$ npm install -g ionic`
 2. Start ionic tabs template  `$ ionic start whatsapp tabs`
@@ -24,3 +24,20 @@
     * `id` -> `_id`
     * `face` -> `picture`
     * `lastText` -> `lastMessage { text, timestamp }`
+
+### Step 3 - Connect to Meteor server
+
+1. Create server:
+    * `$ meteor create server`
+    * `$ rm server.*`
+    * `$ mkdir lib && touch lib/collection.js`
+    * Define `Chats`, `Messages` collections
+    * `$ touch bootstrap.js`
+    * Move the bootstrap data from `Chats` service to initiate the `Chats` collection.
+    * `$ meteor add momentjs:moment`
+2. `$ bower install meteor-client-side angular-meteor --save`
+3. Define collections at the client in `collections.js`
+4. Change the controllers to work with the Meteor Collection and Object:
+    * Use `$scope.$meteorCollection`
+    * Use `$scope.$meteorObject`
+    * Remove `Chats` service
