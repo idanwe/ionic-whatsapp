@@ -41,3 +41,17 @@
     * Use `$scope.$meteorCollection`
     * Use `$scope.$meteorObject`
     * Remove `Chats` service
+
+### Step 4 - Add chat view
+
+1. Imitate Whatsapp's chat ui:
+ * Add `chat-detils.html`
+ * Add `chat-detils.scss`
+ * Add pictures: `chat-background.png`, `message-other.png`, `message-mine.png`
+ * Add angular-moment `$ bower install angular-moment --save`
+2. Add `input.directive.js` to better mobile experience 
+3. Server: Add `'newMessage'` method
+    * `$ meteor add check`
+    * Add `methods.js`
+4. Client: Add `'newMessage'` stub
+    * Add `stubs.js`
