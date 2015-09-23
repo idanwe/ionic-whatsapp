@@ -26,9 +26,7 @@ if (Meteor.isServer) {
         }
       ];
 
-      for (var i = 0; i < messages.length; i++) {
-        Messages.insert(messages[i]);
-      }
+      messages.forEach(m => Messages.insert(m));
 
       var chats = [
         {
@@ -53,13 +51,12 @@ if (Meteor.isServer) {
         }
       ];
 
-      for (var i = 0; i < chats.length; i++) {
-        var message = Messages.findOne({ chatId: { $exists: false } });
-        var chat = chats[i];
+      chats.forEach(chat => {
+        let message = Messages.findOne({ chatId: { $exists: false } });
         chat.lastMessage = message;
-        var chatId = Chats.insert(chat);
+        let chatId = Chats.insert(chat);
         Messages.update(message._id, { $set: { chatId: chatId } })
-      }
+      });
     }
   });
 }
