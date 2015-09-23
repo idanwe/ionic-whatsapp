@@ -55,3 +55,28 @@
     * Add `methods.js`
 4. Client: Add `'newMessage'` stub
     * Add `stubs.js`
+
+### Step 5 - Add users
+
+1. Add accounts-phone 
+    * Server: 
+        - `$ meteor add okland:accounts-phone`
+        - Add `sms.js` and `settings.json`
+    * Client:
+        - `$ bower install accounts-phone --save`
+        - Require the scripts in `index.html` 
+        
+            ```
+            <script src="lib/accounts-base-client-side/dist/accounts-base-client-side.bundle.min.js"></script>
+            <script src="lib/accounts-phone/dist/accounts-phone.bundle.min.js"></script>
+            ```
+2. Add login flow:
+    * Add `'login'`, `'confirmation'`, `'profile'` states
+    * Server: Add `'updateName'` method 
+    * Add 'login', 'profile' style files
+3. Ensure that user is logged in:
+    * Ensure user before 'tab', 'profile' states - resolve `$meteor.requireUser()`
+    * Redirect to login route - `auth.js`
+    * Server: Ensure that user logged in before preform methods
+4. Server: Add `userId` to message 
+5. Add `'settings'` tab with logout button
