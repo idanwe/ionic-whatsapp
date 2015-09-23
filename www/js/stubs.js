@@ -1,4 +1,27 @@
 Meteor.methods({
+  newChat: function (otherId) {
+    check(otherId, String);
+
+    var otherUser = Meteor.users.findOne(otherId);
+    if (! otherUser) {
+      throw Meteor.Error('user-not-exists', 'Chat\'s user not exists');
+    }
+
+    var chat = {
+      userIds: [this.userId, otherId],
+      createdAt: new Date()
+    };
+
+    return Chats.insert(chat);
+  },
+
+  removeChat: function (chatId) {
+    check(chatId, String);
+
+    Messages.remove({ chatId: chatId });
+    return Chats.remove({ _id: chatId });
+  },
+
   newMessage: function (message) {
     check(message, {
       text: String,
