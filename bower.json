@@ -8,6 +8,7 @@
     "moment": "~2.10.6",
     "meteor-client-side": "~0.2.3",
     "angular-meteor": "~1.3.2",
-    "angular-moment": "~0.10.3"
+    "angular-moment": "~0.10.3",
+    "accounts-phone": "~0.0.21"
   }
 }
