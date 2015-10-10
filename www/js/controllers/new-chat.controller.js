@@ -3,6 +3,8 @@ angular
   .controller('NewChatCtrl', NewChatCtrl);
 
 function NewChatCtrl ($scope, $state) {
+  $scope.subscribe('users');
+
   $scope.helpers({
     users: function () {
       return Meteor.users.find({ _id: { $ne: Meteor.userId() } });

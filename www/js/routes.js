@@ -36,6 +36,16 @@ function config ($stateProvider, $urlRouterProvider) {
       resolve: {
         user: ['$auth', function ($auth) {
           return $auth.requireUser();
+        }],
+        chats: ['$q', function ($q) {
+          var deferred = $q.defer();
+
+          Meteor.subscribe('chats', {
+            onReady: deferred.resolve,
+            onStop: deferred.reject
+          });
+
+          return deferred.promise;
         }]
       }
     })
